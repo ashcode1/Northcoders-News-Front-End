@@ -11,4 +11,9 @@ describe('fetchAllArticles', () => {
   test('its success action returns an object', () => {
     expect(typeof fetchAllArticles.fetchArticlesSuccess()).toEqual('object');
   });
+  test('success action returns data passed as a parameter', () => {
+    const data = [1, 2, 3];
+    const test1 = fetchAllArticles.fetchArticlesSuccess(data);
+    expect(test1.data).toEqual([1, 2, 3]);
+  });
 });
