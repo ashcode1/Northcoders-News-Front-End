@@ -16,4 +16,7 @@ describe('fetchAllArticles', () => {
     const test1 = fetchAllArticles.fetchArticlesSuccess(data);
     expect(test1.data).toEqual([1, 2, 3]);
   });
+  test('its error action returns an object', () => {
+    expect(typeof fetchAllArticles.fetchArticlesError()).toEqual('object');
+  });
 });
