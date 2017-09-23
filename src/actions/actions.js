@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ROOT } from '../config';
 import * as fetchAllArticles from './fetchAllArticles';
+import * as fetchAllTopicTitles from './fetchAllTopicTitles';
 import * as fetchAllTopicArticles from './fetchAllTopicArticles';
 
 // FETCH ALL ARTICLES
@@ -13,6 +14,20 @@ export function fetchArticles() {
       })
       .catch((err) => {
         dispatch(fetchAllArticles.fetchArticlesError(err));
+      });
+  };
+}
+
+// FETCH TOPIC TITLES
+export function fetchTopicTitles() {
+  return (dispatch) => {
+    dispatch(fetchAllTopicTitles.fetchTopicTitlesRequest());
+    axios.get(`${ROOT}/topics/`)
+      .then((res) => {
+        dispatch(fetchAllTopicTitles.fetchTopicTitlesSuccess(res.data.topics));
+      })
+      .catch((err) => {
+        dispatch(fetchAllTopicTitles.fetchTopicTitlesError(err));
       });
   };
 }
