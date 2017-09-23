@@ -19,8 +19,16 @@ class TopicPage extends React.Component {
   render() {
     return (
       <div>{
-        this.props.TopicArticles.sort((a, b) => b.votes - a.votes)
-          .map(article => <ArticleCard id={article._id} title={article.title} votes={article.votes} key={article._id} />)}</div>
+        this.props.TopicArticles
+          .sort((a, b) => b.votes - a.votes)
+          .map(article =>
+            (<ArticleCard
+              id={article._id}
+              title={article.title}
+              votes={article.votes}
+              key={article._id}
+            />))}
+      </div>
     );
   }
 }
