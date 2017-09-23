@@ -19,4 +19,9 @@ describe('fetchAllArticles', () => {
   test('its error action returns an object', () => {
     expect(typeof fetchAllArticles.fetchArticlesError()).toEqual('object');
   });
+  test('its error action returns data passed as a parameter', () => {
+    const data = 'There was an Error';
+    const test = fetchAllArticles.fetchArticlesError(data);
+    expect(test.data).toEqual('There was an Error');
+  });
 });
