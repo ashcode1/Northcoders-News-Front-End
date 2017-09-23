@@ -13,13 +13,15 @@ class Home extends React.Component {
   render() {
     return (
       <div id="Home">
-        {this.props.articles.map(article =>
-          (<ArticleCard
-            id={article._id}
-            title={article.title}
-            votes={article.votes}
-            key={article.title}
-          />))}
+        {this.props.articles
+          .sort((a, b) => b.votes - a.votes)
+          .map(article =>
+            (<ArticleCard
+              id={article._id}
+              title={article.title}
+              votes={article.votes}
+              key={article.title}
+            />))}
       </div>
     );
   }
