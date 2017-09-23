@@ -3,6 +3,7 @@ import { ROOT } from '../config';
 import * as fetchAllArticles from './fetchAllArticles';
 import * as fetchAllTopicTitles from './fetchAllTopicTitles';
 import * as fetchAllTopicArticles from './fetchAllTopicArticles';
+import * as fetchIndividualArticle from './fetchArticle';
 
 // FETCH ALL ARTICLES
 export function fetchArticles() {
@@ -45,3 +46,17 @@ export function fetchTopicArticles(topicId) {
       });
   };
 }
+
+export function fetchArticle(articleId) {
+  return (dispatch) => {
+    dispatch(fetchIndividualArticle.fetchArticleRequest());
+    axios.get(`${ROOT}/articles/${articleId}`)
+      .then((res) => {
+        dispatch(fetchIndividualArticle.fetchArticleSuccess(res.data));
+      })
+      .catch((err) => {
+        dispatch(fetchIndividualArticle.fetchArticleError(err));
+      });
+  };
+}
+
