@@ -8,5 +8,7 @@ describe('fetchAllArticles', () => {
   test('its request action returns an object', () => {
     expect(typeof fetchAllArticles.fetchArticlesRequest()).toEqual('object');
   });
+  test('its success action returns an object', () => {
+    expect(typeof fetchAllArticles.fetchArticlesSuccess()).toEqual('object');
+  });
 });
-
