@@ -12,22 +12,23 @@ class Home extends React.Component {
   /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */ 
   render() {
     return (
-      <div id="Home">
-        {this.props.articles
-          .sort((a, b) => b.votes - a.votes)
-          .map(article =>
-            (<ArticleCard
-              article={article}
-              id={article._id}
-              title={article.title}
-              votes={article.votes}
-              key={article.title}
-            />))}
-      </div>
+      <section className="container box">
+        <div id="Home">
+          {this.props.articles
+            .sort((a, b) => b.votes - a.votes)
+            .map(article =>
+              (<ArticleCard
+                article={article}
+                id={article._id}
+                title={article.title}
+                votes={article.votes}
+                key={article.title}
+              />))}
+        </div>
+      </section>
     );
   }
 }
-
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -36,7 +37,6 @@ function mapDispatchToProps(dispatch) {
     },
   };
 }
-
 
 function mapStateToProps(state) {
   return {
