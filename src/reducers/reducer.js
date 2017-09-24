@@ -90,7 +90,7 @@ function reducer(prevState = initialState, action) {
 
   if (action.type === types.FETCH_ARTICLE_ERROR) {
     const newState = Object.assign({}, prevState);
-    newState.error = action.data;
+    newState.error = Object.assign({}, action.data);
     newState.article = [];
     newState.loading = false;
     return newState;
@@ -114,7 +114,25 @@ function reducer(prevState = initialState, action) {
   if (action.type === types.FETCH_ARTICLE_COMMENTS_ERROR) {
     const newState = Object.assign({}, prevState);
     newState.error = action.data;
-    newState.comments = [];
+    newState.comments = {};
+    newState.loading = false;
+    return newState;
+  }
+
+  // ADD COMMENT TO ARTICLE
+
+  if (action.type === types.ADD_COMMENT_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */ 
+  if (action.type === types.ADD_COMMENT_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    const newComments = Object.assign({}, newState.comments);
+    newComments[action.data._id] = action.data;
+    newState.comments = newComments;
     newState.loading = false;
     return newState;
   }
