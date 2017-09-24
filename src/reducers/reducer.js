@@ -71,7 +71,7 @@ function reducer(prevState = initialState, action) {
     newState.topicArticles = [];
     newState.loading = false;
     return newState;
-}
+  }
 
 
   // FETCH ARTICLE
