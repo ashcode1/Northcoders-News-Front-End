@@ -43,7 +43,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    TopicArticles: state.articles,
+    TopicArticles: state.topicArticles,
   };
 }
 
