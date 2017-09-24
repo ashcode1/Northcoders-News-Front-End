@@ -60,7 +60,7 @@ function reducer(prevState = initialState, action) {
 
   if (action.type === types.FETCH_TOPIC_ARTICLES_SUCCESS) {
     const newState = Object.assign({}, prevState);
-    newState.articles = action.data;
+    newState.topicArticles = action.data;
     newState.loading = false;
     return newState;
   }
@@ -68,10 +68,10 @@ function reducer(prevState = initialState, action) {
   if (action.type === types.FETCH_TOPIC_ARTICLES_ERROR) {
     const newState = Object.assign({}, prevState);
     newState.error = action.data;
-    newState.articles = [];
+    newState.topicArticles = [];
     newState.loading = false;
     return newState;
-  }
+}
 
 
   // FETCH ARTICLE
