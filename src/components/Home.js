@@ -17,6 +17,7 @@ class Home extends React.Component {
           .sort((a, b) => b.votes - a.votes)
           .map(article =>
             (<ArticleCard
+              article={article}
               id={article._id}
               title={article.title}
               votes={article.votes}
