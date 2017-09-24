@@ -4,6 +4,8 @@ import * as fetchAllArticles from './fetchAllArticles';
 import * as fetchAllTopicTitles from './fetchAllTopicTitles';
 import * as fetchAllTopicArticles from './fetchAllTopicArticles';
 import * as fetchIndividualArticle from './fetchArticle';
+import * as userAddComment from './userAddComment';
+import * as articleComments from './articleComments';
 
 // FETCH ALL ARTICLES
 export function fetchArticles() {
@@ -61,3 +63,30 @@ export function fetchArticle(articleId) {
   };
 }
 
+// FETCH ARTICLE COMMENTS
+export function fetchArticleComments(articleId) {
+  return (dispatch) => {
+    dispatch(articleComments.fetchArticleCommentsRequest());
+    axios.get(`${ROOT}/articles/${articleId}/comments`)
+      .then((res) => {
+        dispatch(articleComments.fetchArticleCommentsSuccess(res.data.comments));
+      })
+      .catch((err) => {
+        dispatch(articleComments.fetchArticleCommentsError(err));
+      });
+  };
+}
+
+// POST ARTICLE COMMENT
+export function addComment(articleId, comment) {
+  return (dispatch) => {
+    dispatch(userAddComment.addCommentRequest());
+    axios.post(`${ROOT}/articles/${articleId}/comments`, { comment })
+      .then((res) => {
+        dispatch(userAddComment.addCommentSuccess(res.data.comment));
+      })
+      .catch((err) => {
+        dispatch(userAddComment.addCommentError(err));
+      });
+  };
+}
