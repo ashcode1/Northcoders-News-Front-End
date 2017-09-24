@@ -47,6 +47,7 @@ export function fetchTopicArticles(topicId) {
   };
 }
 
+// FETCH ARTICLE
 export function fetchArticle(articleId) {
   return (dispatch) => {
     dispatch(fetchIndividualArticle.fetchArticleRequest());
