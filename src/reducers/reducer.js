@@ -83,7 +83,7 @@ function reducer(prevState = initialState, action) {
 
   if (action.type === types.FETCH_ARTICLE_SUCCESS) {
     const newState = Object.assign({}, prevState);
-    newState.article = action.data;
+    newState.article = Object.assign({}, action.data);
     newState.loading = false;
     return newState;
   }
@@ -91,7 +91,7 @@ function reducer(prevState = initialState, action) {
   if (action.type === types.FETCH_ARTICLE_ERROR) {
     const newState = Object.assign({}, prevState);
     newState.error = Object.assign({}, action.data);
-    newState.article = [];
+    newState.article = {};
     newState.loading = false;
     return newState;
   }
@@ -119,6 +119,7 @@ function reducer(prevState = initialState, action) {
     return newState;
   }
 
+
   // ADD COMMENT TO ARTICLE
 
   if (action.type === types.ADD_COMMENT_REQUEST) {
@@ -133,6 +134,22 @@ function reducer(prevState = initialState, action) {
     const newComments = Object.assign({}, newState.comments);
     newComments[action.data._id] = action.data;
     newState.comments = newComments;
+    newState.loading = false;
+    return newState;
+  }
+
+
+  // ADD VOTE TO ARTICLE
+  if (action.type === types.VOTE_ARTICLE_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.VOTE_ARTICLE_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    const newArticle = Object.assign({}, action.data);
+    newState.article = newArticle;
     newState.loading = false;
     return newState;
   }
