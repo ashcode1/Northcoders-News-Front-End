@@ -5,11 +5,17 @@ const Comment = props => (
   <section className="box">
     <div className="columns">
       <div className="column is-2">
-        <a className="is-danger is-small" >
+        <a
+          className="is-danger is-small"
+          onClick={props.commentVote.bind(null, props.id, 'up')}
+        >
           <i className="fa fa-arrow-up row" />
         </a>
         <span className="row tag is-medium bold">{props.comment.votes}</span>
-        <a className="is-danger is-small" >
+        <a
+          className="is-danger is-small"
+          onClick={props.commentVote.bind(null, props.id, 'down')}
+        >
           <i className="fa fa-arrow-down row" />
         </a>
       </div>
@@ -23,8 +29,11 @@ const Comment = props => (
 );
 
 Comment.propTypes = {
+  commentVote: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
   comment: PropTypes.object.isRequired,
   votes: PropTypes.number.isRequired,
+
 };
 
 export default Comment;
