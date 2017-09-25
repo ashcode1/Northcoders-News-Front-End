@@ -46,7 +46,7 @@ function mapStateToProps(state) {
 
 Home.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
-  articles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  articles: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

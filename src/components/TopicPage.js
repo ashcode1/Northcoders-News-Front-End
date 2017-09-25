@@ -50,8 +50,8 @@ function mapStateToProps(state) {
 
 TopicPage.propTypes = {
   fetchTopicArticles: PropTypes.func.isRequired,
-  TopicArticles: PropTypes.arrayOf(PropTypes.string).isRequired,
-  match: PropTypes.objectOf(PropTypes.string).isRequired,
+  TopicArticles: PropTypes.array.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);

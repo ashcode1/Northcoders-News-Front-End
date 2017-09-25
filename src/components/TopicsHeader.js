@@ -51,7 +51,7 @@ function mapStateToProps(state) {
 }
 
 TopicsHeader.propTypes = {
-  topicsTitles: PropTypes.arrayOf(PropTypes.string).isRequired,
+  topicsTitles: PropTypes.array.isRequired,
   fetchTopicTitles: PropTypes.func.isRequired,
 };
 

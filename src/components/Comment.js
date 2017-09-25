@@ -23,7 +23,7 @@ const Comment = props => (
 );
 
 Comment.propTypes = {
-  comment: PropTypes.objectOf(PropTypes.object).isRequired,
+  comment: PropTypes.object.isRequired,
   votes: PropTypes.number.isRequired,
 };
 
