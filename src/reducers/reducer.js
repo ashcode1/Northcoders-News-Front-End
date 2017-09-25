@@ -90,7 +90,7 @@ function reducer(prevState = initialState, action) {
 
   if (action.type === types.FETCH_ARTICLE_ERROR) {
     const newState = Object.assign({}, prevState);
-    newState.error = Object.assign({}, action.data);
+    newState.error = action.data;
     newState.article = {};
     newState.loading = false;
     return newState;
@@ -121,14 +121,12 @@ function reducer(prevState = initialState, action) {
 
 
   // ADD COMMENT TO ARTICLE
-
   if (action.type === types.ADD_COMMENT_REQUEST) {
     const newState = Object.assign({}, prevState);
     newState.loading = true;
     return newState;
   }
 
-  /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */ 
   if (action.type === types.ADD_COMMENT_SUCCESS) {
     const newState = Object.assign({}, prevState);
     const newComments = Object.assign({}, newState.comments);
@@ -151,6 +149,33 @@ function reducer(prevState = initialState, action) {
     const newArticle = Object.assign({}, action.data);
     newState.article = newArticle;
     newState.loading = false;
+    return newState;
+  }
+
+
+  // ADD VOTE TO COMMENT
+  if (action.type === types.VOTE_COMMENT_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.VOTE_COMMENT_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    const newData = newState.comments.slice();
+    newData.map((comment) => {
+      if (comment._id === action.commentId) {
+        if (action.vote === 'up') {
+          comment.votes++;
+          return comment;
+        }
+        comment.votes--;
+        return comment;
+      }
+      return comment;
+    });
+    newState.comments = newData;
+
     return newState;
   }
 
