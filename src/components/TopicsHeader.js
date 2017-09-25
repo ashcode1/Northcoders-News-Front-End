@@ -10,7 +10,6 @@ class TopicsHeader extends React.Component {
     this.props.fetchTopicTitles();
   }
 
-  /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */ 
   render() {
     return (
       <div className="columns" >
