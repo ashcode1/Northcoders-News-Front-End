@@ -9,7 +9,6 @@ class Home extends React.Component {
     this.props.fetchArticles();
   }
 
-  /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */ 
   render() {
     return (
       <section className="container box">

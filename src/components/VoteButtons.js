@@ -6,7 +6,6 @@ const VoteButtons = props => (
     <a
       className="is-danger is-small"
       onClick={props.handleVote.bind(null, props.id, 'up')}
-      role="presentation"
     >
       <i className="fa fa-arrow-up row" />
     </a>
@@ -14,7 +13,6 @@ const VoteButtons = props => (
     <a
       className="is-danger is-small"
       onClick={props.handleVote.bind(null, props.id, 'down')}
-      role="presentation"
     >
       <i className="fa fa-arrow-down row" />
     </a>

@@ -15,7 +15,6 @@ class TopicPage extends React.Component {
     }
   }
 
-  /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */ 
   render() {
     return (
       <section className="container box">

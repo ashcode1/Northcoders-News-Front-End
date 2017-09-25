@@ -7,6 +7,7 @@ import * as fetchIndividualArticle from './fetchArticle';
 import * as userAddComment from './userAddComment';
 import * as articleComments from './articleComments';
 import * as articleVoteAction from './articleVote';
+import * as voteOnComment from './voteComment';
 
 // FETCH ALL ARTICLES
 export function fetchArticles() {
@@ -103,6 +104,21 @@ export function articleVote(articleId, vote) {
       })
       .catch((error) => {
         dispatch(articleVoteAction.articleVoteError(error));
+      });
+  };
+}
+
+// VOTE COMMENT
+export function commentVote(commentId, vote) {
+  return (dispatch) => {
+    dispatch(voteOnComment.commentVoteRequest());
+    axios
+      .put(`${ROOT}/comments/${commentId}?vote=${vote}`)
+      .then(() => {
+        dispatch(voteOnComment.commentVoteSuccess(commentId, vote));
+      })
+      .catch((error) => {
+        dispatch(voteOnComment.commentVoteError(error));
       });
   };
 }

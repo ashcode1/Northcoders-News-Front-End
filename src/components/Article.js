@@ -37,7 +37,6 @@ class Article extends React.Component {
     this.setState({ commentTextInput: '' });
   }
 
-  /* eslint no-underscore-dangle: ["error", { "allow": ["_id"] }] */ 
   render() {
     return (
       <section className="container box">
@@ -63,6 +62,7 @@ class Article extends React.Component {
                     <Comment
                       comment={comment}
                       key={comment._id}
+                      id={comment._id}
                       commentVote={this.props.commentVote}
                     />
                   ))}
@@ -90,6 +90,9 @@ function mapDispatchToProps(dispatch) {
     articleVote: (articleId, vote) => {
       dispatch(actions.articleVote(articleId, vote));
     },
+    commentVote: (commentId, vote) => {
+      dispatch(actions.commentVote(commentId, vote));
+    },
   };
 }
 
@@ -105,7 +108,7 @@ Article.propTypes = {
   article: PropTypes.object.isRequired,
   match: PropTypes.object.isRequired,
   fetchArticleComments: PropTypes.func.isRequired,
-  comments: PropTypes.object.isRequired,
+  comments: PropTypes.array.isRequired,
   addComment: PropTypes.func.isRequired,
   articleVote: PropTypes.func.isRequired,
   commentVote: PropTypes.func.isRequired,
