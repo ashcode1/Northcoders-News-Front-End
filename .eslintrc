@@ -1,6 +1,7 @@
 {
   "extends": "airbnb",
   "rules": {
+      "react/forbid-prop-types": 0,
       "no-console": "off",
       "max-len": 0,
       "react/jsx-filename-extension": [

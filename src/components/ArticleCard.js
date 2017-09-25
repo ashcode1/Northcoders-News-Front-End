@@ -24,7 +24,7 @@ ArticleCard.propTypes = {
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
-  article: PropTypes.objectOf(PropTypes.object).isRequired,
+  article: PropTypes.object.isRequired,
 };
 
 export default ArticleCard;

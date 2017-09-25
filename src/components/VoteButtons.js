@@ -22,7 +22,7 @@ const VoteButtons = props => (
 );
 
 VoteButtons.propTypes = {
-  id: PropTypes.objectOf(PropTypes.object).isRequired,
+  id: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
   handleVote: PropTypes.func.isRequired,
 };
