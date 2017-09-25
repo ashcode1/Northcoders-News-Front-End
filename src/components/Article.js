@@ -102,10 +102,10 @@ function mapStateToProps(state) {
 
 Article.propTypes = {
   fetchArticle: PropTypes.func.isRequired,
-  article: PropTypes.objectOf(PropTypes.object).isRequired,
-  match: PropTypes.objectOf(PropTypes.object).isRequired,
+  article: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired,
   fetchArticleComments: PropTypes.func.isRequired,
-  comments: PropTypes.objectOf(PropTypes.object).isRequired,
+  comments: PropTypes.object.isRequired,
   addComment: PropTypes.func.isRequired,
   articleVote: PropTypes.func.isRequired,
   commentVote: PropTypes.func.isRequired,
