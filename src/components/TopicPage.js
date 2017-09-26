@@ -19,7 +19,7 @@ class TopicPage extends React.Component {
     return (
       <section className="container box">
         <div>{
-          this.props.TopicArticles.sort((a, b) => b.votes - a.votes)
+          this.props.TopicArticles
             .map(article =>
               (<TopicArticle
                 article={article}
