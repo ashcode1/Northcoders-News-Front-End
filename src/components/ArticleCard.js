@@ -14,7 +14,7 @@ const ArticleCard = props => (
           <NavLink to={`/article/${props.id}`} className="title is-3">{props.title}</NavLink>
         </div>
         <div>Created by: {props.article.created_by}</div>
-        <div>Comments: {props.article.commets}</div>
+        <div>Comments: {props.article.comments}</div>
       </div>
     </article>
   </div>
