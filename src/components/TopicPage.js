@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as actions from '../actions/actions';
-import ArticleCard from './ArticleCard';
+import TopicArticle from './TopicArticle';
 
 class TopicPage extends React.Component {
   componentDidMount() {
@@ -19,14 +19,15 @@ class TopicPage extends React.Component {
     return (
       <section className="container box">
         <div>{
-          this.props.TopicArticles
-            .sort((a, b) => b.votes - a.votes)
+          this.props.TopicArticles.sort((a, b) => b.votes - a.votes)
             .map(article =>
-              (<ArticleCard
+              (<TopicArticle
+                article={article}
                 id={article._id}
                 title={article.title}
                 votes={article.votes}
                 key={article._id}
+                voteOnTopicArticles={this.props.voteOnTopicArticles}
               />))}</div>
       </section>
     );
@@ -37,6 +38,9 @@ function mapDispatchToProps(dispatch) {
   return {
     fetchTopicArticles: (id) => {
       dispatch(actions.fetchTopicArticles(id));
+    },
+    voteOnTopicArticles: (articleId, vote) => {
+      dispatch(actions.voteOnTopicArticles(articleId, vote));
     },
   };
 }
@@ -49,8 +53,10 @@ function mapStateToProps(state) {
 
 TopicPage.propTypes = {
   fetchTopicArticles: PropTypes.func.isRequired,
+  voteOnTopicArticles: PropTypes.func.isRequired,
   TopicArticles: PropTypes.array.isRequired,
   match: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);
+

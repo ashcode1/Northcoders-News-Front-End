@@ -2,15 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-const ArticleCard = props => (
+const TopicArticle = props => (
   <div className="box">
     <article className="media">
       <span className="column is-narrow rows">
-        <a className="is-danger is-small" onClick={props.voteOnArticles.bind(null, props.id, 'up')} >
+        <a
+          className="is-danger is-small"
+          onClick={props.voteOnTopicArticles.bind(null, props.id, 'up')}
+        >
           <i className="fa fa-arrow-up row" />
         </a>
         <span className="row tag is-medium bold">{props.votes}</span>
-        <a className="is-danger is-small" onClick={props.voteOnArticles.bind(null, props.id, 'down')} >
+        <a
+          className="is-danger is-small"
+          onClick={props.voteOnTopicArticles.bind(null, props.id, 'down')}
+        >
           <i className="fa fa-arrow-down row" />
         </a>
       </span>
@@ -25,12 +31,12 @@ const ArticleCard = props => (
   </div>
 );
 
-ArticleCard.propTypes = {
-  voteOnArticles: PropTypes.func.isRequired,
+TopicArticle.propTypes = {
+  voteOnTopicArticles: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
   id: PropTypes.string.isRequired,
   article: PropTypes.object.isRequired,
 };
 
-export default ArticleCard;
+export default TopicArticle;
