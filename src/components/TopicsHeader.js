@@ -16,7 +16,7 @@ class TopicsHeader extends React.Component {
         <div className="column" />
         <div className="column is-half">
           <div id="TopicHeader" className="field is-grouped">
-            <NavLink className="button" to={'/'}>All</NavLink>
+            <NavLink className="button" to={'/'}>Popular</NavLink>
             {this.props.topicsTitles
               .map(topic => (
                 <NavLink
