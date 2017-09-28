@@ -42,7 +42,11 @@ class Article extends React.Component {
       <section className="container box">
         <div className="columns">
           <div className="column is-2">
-            <VoteButtons votes={this.props.article.votes} id={this.props.article._id} handleVote={this.props.articleVote} />
+            <VoteButtons
+              votes={this.props.article.votes}
+              id={this.props.article._id}
+              handleVote={this.props.articleVote}
+            />
           </div>
           <div className="column is-8">
             <section className="box">

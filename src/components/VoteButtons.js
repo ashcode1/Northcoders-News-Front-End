@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/VoteButtons.css';
 
 const VoteButtons = props => (
   <span className="column is-narrow rows">
