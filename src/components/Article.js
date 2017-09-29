@@ -67,6 +67,7 @@ class Article extends React.Component {
                       comment={comment}
                       key={comment._id}
                       id={comment._id}
+                      avatarUrl={this.props.users[comment.created_by].avatar_url}
                       commentVote={this.props.commentVote}
                     />
                   ))}
@@ -121,6 +122,7 @@ Article.propTypes = {
   addComment: PropTypes.func.isRequired,
   articleVote: PropTypes.func.isRequired,
   commentVote: PropTypes.func.isRequired,
+  users: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);
