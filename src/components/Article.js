@@ -60,8 +60,8 @@ class Article extends React.Component {
                 submitHandler={this.submitHandler}
                 input={this.state.commentTextInput}
               />
-              <section className="box">
-                <div id="comment">
+              <section className="box comment">
+                <div className="comment">
                   {map(this.props.comments, comment => (
                     <Comment
                       comment={comment}
@@ -97,6 +97,9 @@ function mapDispatchToProps(dispatch) {
     commentVote: (commentId, vote) => {
       dispatch(actions.commentVote(commentId, vote));
     },
+    fetchUsers: () => {
+      dispatch(actions.fetchUsers());
+    },
   };
 }
 
@@ -104,6 +107,7 @@ function mapStateToProps(state) {
   return {
     article: state.article,
     comments: state.comments,
+    users: state.users,
   };
 }
 
