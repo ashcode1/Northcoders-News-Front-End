@@ -29,7 +29,8 @@ export class TopicPage extends React.Component {
                 key={article._id}
                 avatarUrl={this.props.users[article.created_by].avatar_url}
                 voteOnTopicArticles={this.props.voteOnTopicArticles}
-              />))}</div>
+              />))}
+        </div>
       </section>
     );
   }
