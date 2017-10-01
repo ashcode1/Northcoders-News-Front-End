@@ -27,6 +27,7 @@ export const TopicArticle = props => (
         </div>
         <div>Created By: {props.article.created_by}</div>
         <div>Comments: {props.article.comments}</div>
+        <div>Topic: {props.article.belongs_to}</div>
       </div>
     </article>
   </div>

@@ -6,11 +6,11 @@ import '../css/ArticleCard.css';
 
 const ArticleCard = props => (
   <div className="box">
-    <article className="columns">
-      <span className="column is-2">
-        <div>
+    <article className="media">
+      <figure className="media-left">
+        <figure className="image is-square">
           <img src={props.avatarUrl} alt="User Avatar" />
-        </div>
+        </figure>
         <section className="voteSection">
           <a className="is-danger is-small" onClick={props.voteOnArticles.bind(null, props.id, 'up')} >
             <i className="fa fa-arrow-up row" />
@@ -20,13 +20,14 @@ const ArticleCard = props => (
             <i className="fa fa-arrow-down row" />
           </a>
         </section>
-      </span>
+      </figure>
       <div className="media-content">
         <div className="content">
           <NavLink to={`/article/${props.id}`} className="title is-3">{props.title}</NavLink>
         </div>
-        <div>Created By: {props.article.created_by}</div>
+        <div>Created by: {props.article.created_by}</div>
         <div>Comments: {props.article.comments}</div>
+        <div>Topic: {props.article.belongs_to}</div>
       </div>
     </article>
   </div>

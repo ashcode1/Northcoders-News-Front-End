@@ -42,20 +42,21 @@ class Article extends React.Component {
 
   render() {
     return (
-      <section className="container box">
-        <div className="columns">
-          <div className="column is-2">
-            <VoteButtons
-              votes={this.props.article.votes}
-              id={this.props.article._id}
-              handleVote={this.props.articleVote}
-            />
-          </div>
+      <section className="container">
+        <div className="columns is-centered">
+          {/* <div className="column is-2">
+            
+          </div> */}
           <div className="column is-8">
             <section className="box">
               <h1 className="title"><b>{this.props.article.title}</b></h1>
               <h6 className="subtitle">Created by: {this.props.article.created_by}</h6>
               <p className="">{this.props.article.body}</p>
+              <VoteButtons
+                votes={this.props.article.votes}
+                id={this.props.article._id}
+                handleVote={this.props.articleVote}
+              />
             </section>
             <section className="box">
               <PostCommentForm

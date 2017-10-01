@@ -1,5 +1,10 @@
 .box {
   margin-bottom: 15px;
+  opacity: .95;
+}
+
+.image {
+  opacity: 1;
 }
 
 .voteSection{
@@ -18,3 +23,4 @@
 .trashButtonSection {
   margin-top: 15px;
 }
+

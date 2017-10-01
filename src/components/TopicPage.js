@@ -17,19 +17,21 @@ export class TopicPage extends React.Component {
 
   render() {
     return (
-      <section className="container box">
-        <div>{
-          this.props.TopicArticles
-            .map(article =>
-              (<TopicArticle
-                article={article}
-                id={article._id}
-                title={article.title}
-                votes={article.votes}
-                key={article._id}
-                avatarUrl={this.props.users[article.created_by].avatar_url}
-                voteOnTopicArticles={this.props.voteOnTopicArticles}
-              />))}
+      <section className="container">
+        <div className="columns is-centered">
+          <div className="column is-8">
+            {this.props.TopicArticles
+              .map(article =>
+                (<TopicArticle
+                  article={article}
+                  id={article._id}
+                  title={article.title}
+                  votes={article.votes}
+                  key={article._id}
+                  avatarUrl={this.props.users[article.created_by].avatar_url}
+                  voteOnTopicArticles={this.props.voteOnTopicArticles}
+                />))}
+          </div>
         </div>
       </section>
     );
