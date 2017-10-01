@@ -1,0 +1,4 @@
+.column.is-narrow.rows {
+  display: inline-flex;
+  align-items: flex-end;
+}

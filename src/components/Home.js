@@ -7,6 +7,7 @@ import ArticleCard from './ArticleCard';
 class Home extends React.Component {
   componentDidMount() {
     this.props.fetchArticles();
+    this.props.fetchUsers();
   }
 
   render() {
@@ -22,6 +23,7 @@ class Home extends React.Component {
                 title={article.title}
                 votes={article.votes}
                 key={article.id}
+                avatarUrl={this.props.users[article.created_by].avatar_url}
                 voteOnArticles={this.props.voteOnArticles}
               />))}
         </div>
@@ -38,19 +40,25 @@ function mapDispatchToProps(dispatch) {
     voteOnArticles: (articleId, vote) => {
       dispatch(actions.voteOnArticles(articleId, vote));
     },
+    fetchUsers: () => {
+      dispatch(actions.fetchUsers());
+    },
   };
 }
 
 function mapStateToProps(state) {
   return {
     articles: state.articles,
+    users: state.users,
   };
 }
 
 Home.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   voteOnArticles: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
   articles: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

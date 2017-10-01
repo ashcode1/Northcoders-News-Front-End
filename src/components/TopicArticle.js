@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import '../css/TopicArticle.css';
 
 const TopicArticle = props => (
   <div className="box">
     <article className="media">
       <span className="column is-narrow rows">
+        <div>
+          <img src={props.avatarUrl} alt="User Avatar" />
+        </div>
         <a
           className="is-danger is-small"
           onClick={props.voteOnTopicArticles.bind(null, props.id, 'up')}
@@ -32,6 +36,7 @@ const TopicArticle = props => (
 );
 
 TopicArticle.propTypes = {
+  avatarUrl: PropTypes.string.isRequired,
   voteOnTopicArticles: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,

@@ -19,7 +19,7 @@ class TopicPage extends React.Component {
     return (
       <section className="container box">
         <div>{
-          this.props.TopicArticles.sort((a, b) => b.votes - a.votes)
+          this.props.TopicArticles
             .map(article =>
               (<TopicArticle
                 article={article}
@@ -27,6 +27,7 @@ class TopicPage extends React.Component {
                 title={article.title}
                 votes={article.votes}
                 key={article._id}
+                avatarUrl={this.props.users[article.created_by].avatar_url}
                 voteOnTopicArticles={this.props.voteOnTopicArticles}
               />))}</div>
       </section>
@@ -42,12 +43,16 @@ function mapDispatchToProps(dispatch) {
     voteOnTopicArticles: (articleId, vote) => {
       dispatch(actions.voteOnTopicArticles(articleId, vote));
     },
+    fetchUsers: () => {
+      dispatch(actions.fetchUsers());
+    },
   };
 }
 
 function mapStateToProps(state) {
   return {
     TopicArticles: state.topicArticles,
+    users: state.users,
   };
 }
 
@@ -56,6 +61,7 @@ TopicPage.propTypes = {
   voteOnTopicArticles: PropTypes.func.isRequired,
   TopicArticles: PropTypes.array.isRequired,
   match: PropTypes.object.isRequired,
+  users: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);

@@ -8,6 +8,9 @@ import thunk from 'redux-thunk';
 import reducer from './reducers/reducer';
 import App from './components/App';
 
+import '../node_modules/bulma/css/bulma.css';
+import './css/font-awesome.css';
+
 const logger = createLogger();
 
 const middlewares = [
