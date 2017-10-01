@@ -1,12 +1,11 @@
 import * as types from '../actions/types';
 import initialState from './initialState';
 
-const usernameToObj = (users) => {
-  return users.reduce((res, user) => {
-    res[user.username] = user;
-    return res;
-  }, {});
-};
+const usernameToObj = users => users.reduce((res, user) => {
+  res[user.username] = user;
+  return res;
+}, {});
+
 
 function reducer(prevState = initialState, action) {
   if (!action) return prevState;
@@ -163,6 +162,12 @@ function reducer(prevState = initialState, action) {
     return newState;
   }
 
+  if (action.type === types.ADD_COMMENT_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.data;
+    newState.loading = false;
+    return newState;
+  }
 
   // ADD VOTE TO ARTICLE
   if (action.type === types.VOTE_ARTICLE_REQUEST) {
@@ -179,6 +184,12 @@ function reducer(prevState = initialState, action) {
     return newState;
   }
 
+  if (action.type === types.VOTE_ARTICLE_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.data;
+    newState.loading = false;
+    return newState;
+  }
 
   // ADD VOTE TO COMMENT
   if (action.type === types.VOTE_COMMENT_REQUEST) {
@@ -203,6 +214,13 @@ function reducer(prevState = initialState, action) {
     });
     newState.comments = newData;
 
+    return newState;
+  }
+
+  if (action.type === types.VOTE_COMMENT_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.data;
+    newState.loading = false;
     return newState;
   }
 
@@ -233,6 +251,12 @@ function reducer(prevState = initialState, action) {
     return newState;
   }
 
+  if (action.type === types.VOTE_ARTICLES_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.data;
+    newState.loading = false;
+    return newState;
+  }
 
   // ADD VOTE TO TOPIC ARTICLE IN LIST
   if (action.type === types.VOTE_TOPIC_ARTICLE_REQUEST) {
@@ -244,7 +268,6 @@ function reducer(prevState = initialState, action) {
   if (action.type === types.VOTE_TOPIC_ARTICLE_SUCCESS) {
     const newState = Object.assign({}, prevState);
     const newData = newState.topicArticles.slice();
-    console.log('data', newData);
     newData.map((topicArticle) => {
       if (topicArticle._id === action.articleId) {
         if (action.vote === 'up') {
@@ -258,6 +281,13 @@ function reducer(prevState = initialState, action) {
     });
     newState.topicArticles = newData;
 
+    return newState;
+  }
+
+  if (action.type === types.VOTE_ARTICLES_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.data;
+    newState.loading = false;
     return newState;
   }
 
