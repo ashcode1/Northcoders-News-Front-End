@@ -6,11 +6,11 @@ import '../css/TopicArticle.css';
 
 export const TopicArticle = props => (
   <div className="box">
-    <article className="columns">
-      <span className="column is-2">
-        <div>
+    <article className="media">
+      <figure className="media-left">
+        <figure className="image is-square">
           <img src={props.avatarUrl} alt="User Avatar" />
-        </div>
+        </figure>
         <section className="voteSection">
           <a className="is-danger is-small" onClick={props.voteOnTopicArticles.bind(null, props.id, 'up')} >
             <i className="fa fa-arrow-up row" />
@@ -20,7 +20,7 @@ export const TopicArticle = props => (
             <i className="fa fa-arrow-down row" />
           </a>
         </section>
-      </span>
+      </figure>
       <div className="media-content">
         <div className="content">
           <NavLink to={`/article/${props.id}`} className="title is-3">{props.title}</NavLink>
