@@ -67,7 +67,7 @@ class Article extends React.Component {
                 <div className="comment">
                   {map(this.props.comments, comment => (
                     <Comment
-                      comments={this.props.comments}
+                      comment={comment}
                       key={comment._id}
                       id={comment._id}
                       createdBy={comment.created_by}

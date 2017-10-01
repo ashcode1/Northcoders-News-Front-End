@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import '../css/VoteButtons.css';
 
 const VoteButtons = props => (
@@ -13,7 +14,6 @@ const VoteButtons = props => (
         <i className="fa fa-arrow-circle-down row" />
       </a>
     </span>
-
   </section>
 );
 
