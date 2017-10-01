@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UnauthorisedUserModal = (props) => {
+const UnauthorisedAccessModal = (props) => {
   if (!props.modalOverlay) {
     return null;
   }
@@ -11,7 +11,7 @@ const UnauthorisedUserModal = (props) => {
       <div className="modal-content">
         <section className="box">
           <div className="column is-8">
-            <h1 className="title"><b>Unauthorised User!</b></h1>
+            <h1 className="title"><b>Unauthorised Access</b></h1>
             <p>
               You do not have permission to delete other users comments.
               You can however vote on comments by clicking the up or down arrows.
@@ -24,9 +24,17 @@ const UnauthorisedUserModal = (props) => {
   );
 };
 
-UnauthorisedUserModal.propTypes = {
+UnauthorisedAccessModal.defaultProps = {
+  modalOverlay: false,
+  onClose: () => ({
+    value: 'default value',
+  }),
+};
+
+UnauthorisedAccessModal.propTypes = {
   modalOverlay: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
-export default UnauthorisedUserModal;
+
+export default UnauthorisedAccessModal;
