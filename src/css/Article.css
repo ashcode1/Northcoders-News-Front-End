@@ -1,7 +1,11 @@
-/* .container box {
-  margin-top: 200px;
-} */
-
 .hero {
   margin-bottom: 150px;
+}
+
+.box {
+  margin-bottom: 20%;
+}
+
+.box.comment {
+  margin-top: 5%;
 }

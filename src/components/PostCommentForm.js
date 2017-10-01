@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import '../css/PostCommentForm.css';
+
 const PostCommentForm = props => (
   <div>
     <form className="media-content" onSubmit={props.submitHandler}>
