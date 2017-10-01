@@ -15,7 +15,7 @@ class TopicsHeader extends React.Component {
 
   render() {
     return (
-      <section className="hero is-mediumi">
+      <section className="hero is-small">
         {/* HERO HEADER */}
         <div className="hero-head">
           <header className="nav">
