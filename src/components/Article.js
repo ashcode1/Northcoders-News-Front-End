@@ -8,6 +8,8 @@ import VoteButtons from './VoteButtons';
 import PostCommentForm from './PostCommentForm';
 import Comment from './Comment';
 
+import '../css/Article.css';
+
 class Article extends React.Component {
   constructor(props) {
     super(props);

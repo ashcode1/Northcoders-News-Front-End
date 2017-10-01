@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import 'bulma/css/bulma.css';
+import '../css/App.css';
 
 import Home from './Home';
 import TopicsHeader from './TopicsHeader';
