@@ -23,6 +23,16 @@ const PostCommentForm = props => (
   </div>
 );
 
+PostCommentForm.defaultProps = {
+  submitHandler: () => ({
+    value: 'default value',
+  }),
+  inputHandler: () => ({
+    value: 'default value',
+  }),
+  input: '',
+};
+
 PostCommentForm.propTypes = {
   submitHandler: PropTypes.func.isRequired,
   inputHandler: PropTypes.func.isRequired,
