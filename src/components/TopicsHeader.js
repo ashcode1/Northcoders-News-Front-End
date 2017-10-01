@@ -103,6 +103,13 @@ function mapStateToProps(state) {
   };
 }
 
+TopicsHeader.defaultProps = {
+  topicsTitles: [],
+  fetchTopicTitles: () => ({
+    value: 'default value',
+  }),
+};
+
 TopicsHeader.propTypes = {
   topicsTitles: PropTypes.array.isRequired,
   fetchTopicTitles: PropTypes.func.isRequired,
