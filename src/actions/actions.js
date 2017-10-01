@@ -11,6 +11,7 @@ import * as voteOnComment from './voteComment';
 import * as articlesVote from './articlesVote';
 import * as topicArticlesVote from './topicArticlesVote';
 import * as fetchAllUsers from './fetchAllUsers';
+import * as deleteCommentAction from './deleteComment';
 
 // FETCH ALL ARTICLES
 export function fetchArticles() {
@@ -166,6 +167,21 @@ export function commentVote(commentId, vote) {
       })
       .catch((error) => {
         dispatch(voteOnComment.commentVoteError(error));
+      });
+  };
+}
+
+// DELETE COMMENT
+export function deleteComment(commentId) {
+  return (dispatch) => {
+    dispatch(deleteCommentAction.deleteCommentRequest());
+    axios
+      .delete(`${ROOT}/comments/${commentId}`)
+      .then(() => {
+        dispatch(deleteCommentAction.deleteCommentSuccess(commentId));
+      })
+      .catch((error) => {
+        dispatch(deleteCommentAction.deleteCommentError(error));
       });
   };
 }
