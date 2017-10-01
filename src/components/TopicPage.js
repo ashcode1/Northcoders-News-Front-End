@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as actions from '../actions/actions';
 import TopicArticle from './TopicArticle';
 
-class TopicPage extends React.Component {
+export class TopicPage extends React.Component {
   componentDidMount() {
     this.props.fetchTopicArticles(this.props.match.params.topic_slug);
   }
@@ -19,7 +19,7 @@ class TopicPage extends React.Component {
     return (
       <section className="container box">
         <div>{
-          this.props.TopicArticles
+          this.props.TopicArticles.sort((a, b) => b.votes - a.votes)
             .map(article =>
               (<TopicArticle
                 article={article}
@@ -35,6 +35,7 @@ class TopicPage extends React.Component {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return {
     fetchTopicArticles: (id) => {
@@ -49,6 +50,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
+
 function mapStateToProps(state) {
   return {
     TopicArticles: state.topicArticles,
@@ -56,13 +58,24 @@ function mapStateToProps(state) {
   };
 }
 
+TopicPage.defaultProps = {
+  TopicArticles: [],
+  match: {},
+  users: {},
+  fetchTopicArticles: () => ({
+    value: 'default value',
+  }),
+  voteOnTopicArticles: () => ({
+    value: 'default value',
+  }),
+};
+
 TopicPage.propTypes = {
   fetchTopicArticles: PropTypes.func.isRequired,
-  voteOnTopicArticles: PropTypes.func.isRequired,
   TopicArticles: PropTypes.array.isRequired,
   match: PropTypes.object.isRequired,
-  users: PropTypes.string.isRequired,
+  users: PropTypes.object.isRequired,
+  voteOnTopicArticles: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);
-
