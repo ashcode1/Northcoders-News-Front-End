@@ -53,12 +53,26 @@ function mapStateToProps(state) {
   };
 }
 
+Home.defaultProps = {
+  articles: [],
+  users: {},
+  fetchArticles: () => ({
+    value: 'default value',
+  }),
+  voteOnArticles: () => ({
+    value: 'default value',
+  }),
+  fetchUsers: () => ({
+    value: 'default value',
+  }),
+};
+
 Home.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
-  voteOnArticles: PropTypes.func.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
   articles: PropTypes.array.isRequired,
-  users: PropTypes.array.isRequired,
+  voteOnArticles: PropTypes.func.isRequired,
+  users: PropTypes.object.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
