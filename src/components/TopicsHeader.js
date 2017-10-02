@@ -31,18 +31,24 @@ class TopicsHeader extends React.Component {
                 <span />
                 <span />
               </span>
+
               <div className="nav-right nav-menu">
                 <NavLink
                   to={'/'}
                   className="nav-item is-active"
                   onClick={() =>
                     scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
-                >
-                  Home
+                >Home
                 </NavLink>
-                <a className="nav-item">
-                About
-                </a>
+
+                <NavLink
+                  to={'/About'}
+                  className="nav-item"
+                  onClick={() =>
+                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
+                >About
+                </NavLink>
+
                 <span className="nav-item">
                   <a className="button is-info is-inverted">
                     <span className="icon">

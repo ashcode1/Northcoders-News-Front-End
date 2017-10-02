@@ -6,6 +6,7 @@ import 'bulma/css/bulma.css';
 import '../css/App.css';
 
 import Home from './Home';
+import About from './About';
 import TopicsHeader from './TopicsHeader';
 import TopicPage from './TopicPage';
 import Article from './Article';
@@ -18,6 +19,7 @@ const App = () => (
       <TopicsHeader />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/About" component={About} />
         <Route path="/articles/:topic_slug" component={TopicPage} />
         <Route path="/article/:article_id" component={Article} />
       </Switch>
