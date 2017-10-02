@@ -76,7 +76,7 @@ class TopicsHeader extends React.Component {
                 >
                   <li className="is-active"><a>Most Popular</a></li>
                 </NavLink>
-                
+
                 {this.props.topicsTitles
                   .map(topic => (
                     <NavLink
