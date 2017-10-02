@@ -10,6 +10,7 @@ import About from './About';
 import TopicsHeader from './TopicsHeader';
 import TopicPage from './TopicPage';
 import Article from './Article';
+import Footer from './Footer';
 
 const history = createBrowserHistory();
 
@@ -23,6 +24,7 @@ const App = () => (
         <Route path="/articles/:topic_slug" component={TopicPage} />
         <Route path="/article/:article_id" component={Article} />
       </Switch>
+      <Footer />
     </div>
   </Router>
 );
