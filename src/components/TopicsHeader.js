@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import scrollToComponent from 'react-scroll-to-component';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -15,7 +16,7 @@ class TopicsHeader extends React.Component {
 
   render() {
     return (
-      <section className="hero is-small">
+      <section className="hero is-fullheight">
         {/* HERO HEADER */}
         <div className="hero-head">
           <header className="nav">
@@ -65,16 +66,24 @@ class TopicsHeader extends React.Component {
         {/* HERO FOOTER */}
         <div className="hero-foot">
           <nav className="tabs is-boxed is-fullwidth">
-            <div className="container">
+            <div className="container" ref={(section) => { this.Container = section; }}>
               <ul>
-                <NavLink className="nav_wrap" to={'/'}>
+                <NavLink
+                  className="nav_tab"
+                  to={'/'}
+                  onClick={() =>
+                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
+                >
                   <li className="is-active"><a>Most Popular</a></li>
                 </NavLink>
+                
                 {this.props.topicsTitles
                   .map(topic => (
                     <NavLink
                       to={`/articles/${topic.slug}`}
                       key={topic._id}
+                      onClick={() =>
+                        scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
                     >
                       <li><a>{topic.title}</a></li>
                     </NavLink>
