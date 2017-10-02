@@ -32,9 +32,14 @@ class TopicsHeader extends React.Component {
                 <span />
               </span>
               <div className="nav-right nav-menu">
-                <a className="nav-item is-active">
-                Home
-                </a>
+                <NavLink
+                  to={'/'}
+                  className="nav-item is-active"
+                  onClick={() =>
+                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
+                >
+                  Home
+                </NavLink>
                 <a className="nav-item">
                 About
                 </a>
