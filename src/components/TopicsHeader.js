@@ -24,9 +24,9 @@ class TopicsHeader extends React.Component {
           <header className="nav">
             <div className="container">
               <div className="nav-left">
-                <a className="nav-item">
+                <NavLink to="https://northcoders.com/" target="_blank" className="nav-item">
                   <img src={NCnewsLogo} alt="NORTHCODERS NEWS" />
-                </a>
+                </NavLink>
               </div>
               <span className="nav-toggle">
                 <span />
@@ -37,7 +37,7 @@ class TopicsHeader extends React.Component {
               <div className="nav-right nav-menu">
                 <NavLink
                   to={'/'}
-                  className="nav-item is-active"
+                  className="nav-item"
                   onClick={() =>
                     scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
                 >Home
@@ -51,14 +51,14 @@ class TopicsHeader extends React.Component {
                 >About
                 </NavLink>
 
-                <span className="nav-item">
+                <NavLink to="https://github.com/ashcode1" target="_blank" className="nav-item">
                   <a className="button is-info is-inverted">
                     <span className="icon">
                       <i className="fa fa-github" />
                     </span>
                     <span>Download</span>
                   </a>
-                </span>
+                </NavLink>
               </div>
             </div>
           </header>
@@ -87,7 +87,7 @@ class TopicsHeader extends React.Component {
                   onClick={() =>
                     scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
                 >
-                  <li className="is-active"><a>Most Popular</a></li>
+                  <li><a>Most Popular</a></li>
                 </NavLink>
 
                 {this.props.topicsTitles

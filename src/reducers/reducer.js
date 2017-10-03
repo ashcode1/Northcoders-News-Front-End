@@ -291,6 +291,29 @@ function reducer(prevState = initialState, action) {
     return newState;
   }
 
+  // DELETE COMMENT REDUCER
+  if (action.type === types.DELETE_USER_COMMENT_REQUEST) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = true;
+    return newState;
+  }
+
+  if (action.type === types.DELETE_USER_COMMENT_SUCCESS) {
+    const newState = Object.assign({}, prevState);
+    newState.loading = false;
+    newState.comments = prevState.comments.filter(comment => comment._id !== action.commentId);
+    return newState;
+  }
+
+  if (action.type === types.DELETE_USER_COMMENT_ERROR) {
+    const newState = Object.assign({}, prevState);
+    newState.error = action.data;
+    newState.comments = [];
+    newState.loading = false;
+    return newState;
+  }
+
+
   return prevState;
 }
 

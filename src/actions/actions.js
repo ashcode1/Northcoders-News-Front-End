@@ -58,9 +58,11 @@ export function fetchTopicTitles() {
 // FETCH TOPICS ARTICLES
 export function fetchTopicArticles(topicId) {
   return (dispatch) => {
+    console.log('FETCHING');
     dispatch(fetchAllTopicArticles.fetchTopicArticlesRequest());
     axios.get(`${ROOT}/topics/${topicId}/articles`)
       .then((res) => {
+        console.log('HEARD BACK FROM LOCALHOST');
         dispatch(fetchAllTopicArticles.fetchTopicArticlesSuccess(res.data.articles));
       })
       .catch((err) => {

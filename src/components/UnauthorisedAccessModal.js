@@ -13,7 +13,7 @@ const UnauthorisedAccessModal = (props) => {
           <div className="column is-8">
             <h1 className="title"><b>Unauthorised Access</b></h1>
             <p>
-              You do not have permission to delete other users comments.
+              You do not have permission to delete other users' comments.
               You can however vote on comments by clicking the up or down arrows.
             </p>
           </div>
