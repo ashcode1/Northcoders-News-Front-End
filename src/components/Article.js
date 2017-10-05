@@ -44,9 +44,6 @@ class Article extends React.Component {
     return (
       <section className="container">
         <div className="columns is-centered">
-          {/* <div className="column is-2">
-            
-          </div> */}
           <div className="column is-8">
             <section className="box">
               <h1 className="title"><b>{this.props.article.title}</b></h1>
