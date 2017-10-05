@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import scrollToComponent from 'react-scroll-to-component';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -7,7 +8,6 @@ import * as actions from '../actions/actions';
 import NCnewsLogo from '../images/NC_logo_black.png';
 import NCnewsLogoHero from '../images/NC_logo_hero_b.png';
 
-
 class TopicsHeader extends React.Component {
   componentDidMount() {
     this.props.fetchTopicTitles();
@@ -15,36 +15,47 @@ class TopicsHeader extends React.Component {
 
   render() {
     return (
-      <section className="hero is-mediumi">
+      <section className="hero is-fullheight">
         {/* HERO HEADER */}
         <div className="hero-head">
           <header className="nav">
             <div className="container">
               <div className="nav-left">
-                <a className="nav-item">
+                <NavLink to="https://northcoders.com/" target="_blank" className="nav-item">
                   <img src={NCnewsLogo} alt="NORTHCODERS NEWS" />
-                </a>
+                </NavLink>
               </div>
               <span className="nav-toggle">
                 <span />
                 <span />
                 <span />
               </span>
+
               <div className="nav-right nav-menu">
-                <a className="nav-item is-active">
-                Home
-                </a>
-                <a className="nav-item">
-                About
-                </a>
-                <span className="nav-item">
+                <NavLink
+                  to={'/'}
+                  className="nav-item"
+                  onClick={() =>
+                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
+                >Home
+                </NavLink>
+
+                <NavLink
+                  to={'/About'}
+                  className="nav-item"
+                  onClick={() =>
+                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
+                >About
+                </NavLink>
+
+                <NavLink to="https://github.com/ashcode1" target="_blank" className="nav-item">
                   <a className="button is-info is-inverted">
                     <span className="icon">
                       <i className="fa fa-github" />
                     </span>
                     <span>Download</span>
                   </a>
-                </span>
+                </NavLink>
               </div>
             </div>
           </header>
@@ -65,16 +76,24 @@ class TopicsHeader extends React.Component {
         {/* HERO FOOTER */}
         <div className="hero-foot">
           <nav className="tabs is-boxed is-fullwidth">
-            <div className="container">
+            <div className="container" ref={(section) => { this.Container = section; }}>
               <ul>
-                <NavLink className="nav_wrap" to={'/'}>
-                  <li className="is-active"><a>Most Popular</a></li>
+                <NavLink
+                  className="nav_tab"
+                  to={'/'}
+                  onClick={() =>
+                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
+                >
+                  <li><a>Most Popular</a></li>
                 </NavLink>
+
                 {this.props.topicsTitles
                   .map(topic => (
                     <NavLink
                       to={`/articles/${topic.slug}`}
                       key={topic._id}
+                      onClick={() =>
+                        scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
                     >
                       <li><a>{topic.title}</a></li>
                     </NavLink>
@@ -102,6 +121,13 @@ function mapStateToProps(state) {
     topicsTitles: state.topics,
   };
 }
+
+TopicsHeader.defaultProps = {
+  topicsTitles: [],
+  fetchTopicTitles: () => ({
+    value: 'default value',
+  }),
+};
 
 TopicsHeader.propTypes = {
   topicsTitles: PropTypes.array.isRequired,

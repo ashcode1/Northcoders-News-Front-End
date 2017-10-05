@@ -1,16 +1,6 @@
-.box {
-  margin-bottom: 15px;
-  opacity: .95;
-}
-
-.image {
-  opacity: 1;
-}
-
 .voteSection{
   display: inline-flex;
   align-items: flex-end;
-
 }
 
 .tag.is-medium.bold {
@@ -23,4 +13,3 @@
 .trashButtonSection {
   margin-top: 15px;
 }
-

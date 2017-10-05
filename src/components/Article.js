@@ -24,6 +24,7 @@ class Article extends React.Component {
   componentDidMount() {
     const articleId = this.props.match.params.article_id;
     this.props.fetchArticle(articleId);
+    this.props.fetchUsers();
     this.props.fetchArticleComments(articleId);
   }
 
@@ -41,20 +42,18 @@ class Article extends React.Component {
 
   render() {
     return (
-      <section className="container box">
-        <div className="columns">
-          <div className="column is-2">
-            <VoteButtons
-              votes={this.props.article.votes}
-              id={this.props.article._id}
-              handleVote={this.props.articleVote}
-            />
-          </div>
+      <section className="container">
+        <div className="columns is-centered">
           <div className="column is-8">
             <section className="box">
               <h1 className="title"><b>{this.props.article.title}</b></h1>
               <h6 className="subtitle">Created by: {this.props.article.created_by}</h6>
               <p className="">{this.props.article.body}</p>
+              <VoteButtons
+                votes={this.props.article.votes}
+                id={this.props.article._id}
+                handleVote={this.props.articleVote}
+              />
             </section>
             <section className="box">
               <PostCommentForm
@@ -69,8 +68,10 @@ class Article extends React.Component {
                       comment={comment}
                       key={comment._id}
                       id={comment._id}
+                      createdBy={comment.created_by}
                       avatarUrl={this.props.users[comment.created_by].avatar_url}
                       commentVote={this.props.commentVote}
+                      deleteComment={this.props.deleteComment}
                     />
                   ))}
                 </div>
@@ -88,6 +89,9 @@ function mapDispatchToProps(dispatch) {
     fetchArticle: (id) => {
       dispatch(actions.fetchArticle(id));
     },
+    fetchUsers: () => {
+      dispatch(actions.fetchUsers());
+    },
     fetchArticleComments: (id) => {
       dispatch(actions.fetchArticleComments(id));
     },
@@ -100,8 +104,8 @@ function mapDispatchToProps(dispatch) {
     commentVote: (commentId, vote) => {
       dispatch(actions.commentVote(commentId, vote));
     },
-    fetchUsers: () => {
-      dispatch(actions.fetchUsers());
+    deleteComment: (commentId) => {
+      dispatch(actions.deleteComment(commentId));
     },
   };
 }
@@ -124,7 +128,9 @@ Article.propTypes = {
   addComment: PropTypes.func.isRequired,
   articleVote: PropTypes.func.isRequired,
   commentVote: PropTypes.func.isRequired,
+  fetchUsers: PropTypes.func.isRequired,
   users: PropTypes.object.isRequired,
+  deleteComment: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Article);

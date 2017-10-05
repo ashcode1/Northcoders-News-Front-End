@@ -11,6 +11,7 @@ import * as voteOnComment from './voteComment';
 import * as articlesVote from './articlesVote';
 import * as topicArticlesVote from './topicArticlesVote';
 import * as fetchAllUsers from './fetchAllUsers';
+import * as deleteCommentAction from './deleteComment';
 
 // FETCH ALL ARTICLES
 export function fetchArticles() {
@@ -57,9 +58,11 @@ export function fetchTopicTitles() {
 // FETCH TOPICS ARTICLES
 export function fetchTopicArticles(topicId) {
   return (dispatch) => {
+    console.log('FETCHING');
     dispatch(fetchAllTopicArticles.fetchTopicArticlesRequest());
     axios.get(`${ROOT}/topics/${topicId}/articles`)
       .then((res) => {
+        console.log('HEARD BACK FROM LOCALHOST');
         dispatch(fetchAllTopicArticles.fetchTopicArticlesSuccess(res.data.articles));
       })
       .catch((err) => {
@@ -166,6 +169,21 @@ export function commentVote(commentId, vote) {
       })
       .catch((error) => {
         dispatch(voteOnComment.commentVoteError(error));
+      });
+  };
+}
+
+// DELETE COMMENT
+export function deleteComment(commentId) {
+  return (dispatch) => {
+    dispatch(deleteCommentAction.deleteCommentRequest());
+    axios
+      .delete(`${ROOT}/comments/${commentId}`)
+      .then(() => {
+        dispatch(deleteCommentAction.deleteCommentSuccess(commentId));
+      })
+      .catch((error) => {
+        dispatch(deleteCommentAction.deleteCommentError(error));
       });
   };
 }

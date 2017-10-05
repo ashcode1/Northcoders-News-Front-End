@@ -22,6 +22,8 @@ const store = createStore(
   reducer,
   compose(applyMiddleware(...middlewares)));
 
+console.log('**************************');
+
 ReactDOM.render(<Provider store={store}>
   <App />
 </Provider>, document.getElementById('app'));
