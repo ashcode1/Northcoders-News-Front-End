@@ -39,37 +39,39 @@ export class Comment extends React.Component {
 
   render() {
     return (
-      <section className="box">
-        <article className="media">
-          <figure className="media-left">
-            <figure className="image is-square">
-              <img src={this.props.avatarUrl} alt="User Avatar" />
+      <div>
+        <section className="box">
+          <article className="media">
+            <figure className="media-left">
+              <figure className="image is-square">
+                <img src={this.props.avatarUrl} alt="User Avatar" />
+              </figure>
+              <section className="voteSection">
+                <a className="is-danger is-small" onClick={this.props.commentVote.bind(null, this.props.id, 'up')} >
+                  <i className="fa fa-arrow-circle-up row" />
+                </a>
+                <span className="row tag is-medium bold">{this.props.comment.votes}</span>
+                <a className="is-danger is-small" onClick={this.props.commentVote.bind(null, this.props.id, 'down')} >
+                  <i className="fa fa-arrow-circle-down row" />
+                </a>
+              </section>
             </figure>
-            <section className="voteSection">
-              <a className="is-danger is-small" onClick={this.props.commentVote.bind(null, this.props.id, 'up')} >
-                <i className="fa fa-arrow-circle-up row" />
-              </a>
-              <span className="row tag is-medium bold">{this.props.comment.votes}</span>
-              <a className="is-danger is-small" onClick={this.props.commentVote.bind(null, this.props.id, 'down')} >
-                <i className="fa fa-arrow-circle-down row" />
-              </a>
-            </section>
-          </figure>
-          <div className="media-content">
-            <div className="content">
-              <p className="comment-body">{this.props.comment.body}</p>
+            <div className="media-content">
+              <div className="content">
+                <p className="comment-body">{this.props.comment.body}</p>
+              </div>
             </div>
-          </div>
-          <div className="media-right">
-            <section className="trashButtonSection">
-              <a className="is-warning is-small" onClick={this.handleDelete.bind(null, this.props, this.state)}>
-                <i className="fa fa-trash-o is-medium" />
-              </a>
-            </section>
-          </div>
-        </article>
+            <div className="media-right">
+              <section className="trashButtonSection">
+                <a className="is-warning is-small" onClick={this.handleDelete.bind(null, this.props, this.state)}>
+                  <i className="fa fa-trash-o is-medium" />
+                </a>
+              </section>
+            </div>
+          </article>       
+        </section>
         <UnauthorisedAccessModal modalOverlay={this.state.modalOverlay} onClose={this.toggleModal} />
-      </section>
+     </div>
     );
   }
 }
