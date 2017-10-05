@@ -39,6 +39,17 @@ const About = () => (
                 </ul>
               </div>
             </div>
+            <div className="columns is-centered">
+              <div className="column is-10">
+                <h2 className="title is-2">Built with...</h2>
+                <h4 className="title is-4">Northcoder News is built on Node JS and the following:</h4>
+                <ul>
+                  <li><a href="https://reactjs.org/" target="_blank">REACT</a></li>
+                  <li><a href="http://redux.js.org/" target="_blank">REDUX</a></li>
+                  <li><a href="http://bulma.io/" target="_blank">BULMA</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </section>
       </div>
