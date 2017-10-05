@@ -8,9 +8,6 @@ import * as actions from '../actions/actions';
 import NCnewsLogo from '../images/NC_logo_black.png';
 import NCnewsLogoHero from '../images/NC_logo_hero_b.png';
 
-import '../css/Footer.css';
-
-
 class TopicsHeader extends React.Component {
   componentDidMount() {
     this.props.fetchTopicTitles();

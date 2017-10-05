@@ -20,7 +20,7 @@ export class TopicPage extends React.Component {
       <section className="container">
         <div className="columns is-centered">
           <div className="column is-8">
-            {/* {this.props.TopicArticles
+            {this.props.TopicArticles
               .map(article =>
                 (<TopicArticle
                   article={article}
@@ -30,7 +30,7 @@ export class TopicPage extends React.Component {
                   key={article._id}
                   avatarUrl={this.props.users[article.created_by].avatar_url}
                   voteOnTopicArticles={this.props.voteOnTopicArticles}
-                />))} */}
+                />))}
           </div>
         </div>
       </section>
