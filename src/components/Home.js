@@ -75,7 +75,7 @@ Home.propTypes = {
   fetchArticles: PropTypes.func.isRequired,
   articles: PropTypes.array.isRequired,
   voteOnArticles: PropTypes.func.isRequired,
-  users: PropTypes.object.isRequired,
+  users: PropTypes.array.isRequired,
   fetchUsers: PropTypes.func.isRequired,
 };
 
