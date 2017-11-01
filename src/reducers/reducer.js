@@ -178,7 +178,8 @@ function reducer(prevState = initialState, action) {
 
   if (action.type === types.VOTE_ARTICLE_SUCCESS) {
     const newState = Object.assign({}, prevState);
-    const newArticle = Object.assign({}, action.data);
+    const newArticle = Object.assign({}, prevState.article);
+    newArticle.votes = action.data === 'up' ? newArticle.votes + 1 : newArticle.votes - 1;
     newState.article = newArticle;
     newState.loading = false;
     return newState;
@@ -201,6 +202,7 @@ function reducer(prevState = initialState, action) {
   if (action.type === types.VOTE_COMMENT_SUCCESS) {
     const newState = Object.assign({}, prevState);
     const newData = newState.comments.slice();
+    console.log("NEW DATA", newData);
     newData.map((comment) => {
       if (comment._id === action.commentId) {
         if (action.vote === 'up') {
@@ -301,18 +303,18 @@ function reducer(prevState = initialState, action) {
   if (action.type === types.DELETE_USER_COMMENT_SUCCESS) {
     const newState = Object.assign({}, prevState);
     newState.loading = false;
-    newState.comments = prevState.comments.filter(comment => comment._id !== action.commentId);
+    newState.comments = newState.comments.filter(comment => comment._id !== action.commentId);
+    // newState.comments = prevState.comments.splice(comments.length, 1);
     return newState;
   }
 
   if (action.type === types.DELETE_USER_COMMENT_ERROR) {
     const newState = Object.assign({}, prevState);
     newState.error = action.data;
-    newState.comments = [];
+    // newState.comments = [];    
     newState.loading = false;
     return newState;
   }
-
 
   return prevState;
 }

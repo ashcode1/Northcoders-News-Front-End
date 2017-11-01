@@ -6,10 +6,10 @@ export function fetchArticleRequest() {
   };
 }
 
-export function fetchArticleSuccess(articles) {
+export function fetchArticleSuccess(article) {
   return {
     type: types.FETCH_ARTICLE_SUCCESS,
-    data: articles,
+    data: article,
   };
 }
 

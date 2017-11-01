@@ -1,0 +1,31 @@
+.column {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.menu-list li {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@media only screen and (max-width: 590px) {
+  .hero-foot {
+    visibility: hidden; 
+  }
+  
+  .menu {
+    color: black;
+  }
+}
+
+@media only screen and (min-width: 591px) {
+  .menu {
+    visibility: hidden;
+  }
+}
+
+

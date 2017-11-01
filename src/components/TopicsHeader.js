@@ -8,15 +8,33 @@ import * as actions from '../actions/actions';
 import NCnewsLogo from '../images/NC_logo_black.png';
 import NCnewsLogoHero from '../images/NC_logo_hero_b.png';
 
+import '../css/TopicsHeader.css';
+
 class TopicsHeader extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      menuIsOpen: false
+    };
+  }
+
   componentDidMount() {
     this.props.fetchTopicTitles();
   }
+  showSettings (event) {
+    event.preventDefault();
+  }
+
 
   render() {
     return (
+      <div className="column is-mobile">
+        <div className="column">
       <section className="hero is-fullheight">
+
         {/* HERO HEADER */}
+
+        {/* LEFT */}
         <div className="hero-head">
           <header className="nav">
             <div className="container">
@@ -25,27 +43,43 @@ class TopicsHeader extends React.Component {
                   <img src={NCnewsLogo} alt="NORTHCODERS NEWS" />
                 </NavLink>
               </div>
-              <span className="nav-toggle">
-                <span />
-                <span />
-                <span />
-              </span>
 
-              <div className="nav-right nav-menu">
-                <NavLink
-                  to={'/'}
-                  className="nav-item"
-                  onClick={() =>
-                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
-                >Home
+              {/* RIGHT */}
+
+              {/* burger menu */}                
+              <div style={{position: 'relative'}}>
+                  
+                  <span onClick={() => this.setState({menuIsOpen: !this.state.menuIsOpen})} className="nav-toggle" aria-haspopup="true" aria-controls="dropdown-menu">
+                      <span className="line"/>
+                      <span className="line"/>
+                      <span className="line"/>
+                  </span>
+
+                  {this.state.menuIsOpen && <div style={{position: 'absolute', top: '100%', right: 0}} className="dropdown-content">
+                    <ul className="menu-list" >
+                      <NavLink to={'/'} onClick={() =>
+                          scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}>
+                        <li>Home</li>
+                      </NavLink>
+
+                      <NavLink to={'/About'} onClick={() =>
+                          scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}>
+                        <li>About</li>
+                    </NavLink>
+                    </ul>
+                  </div>}
+              </div>
+
+              {/* full screen */}
+              <div className="nav-right nav-menu" id="full-navbar">
+                <NavLink to={'/'} className="nav-item home" onClick={() =>
+                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}>
+                  Home
                 </NavLink>
 
-                <NavLink
-                  to={'/About'}
-                  className="nav-item"
-                  onClick={() =>
-                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
-                >About
+                <NavLink to={'/About'} className="nav-item about" onClick={() =>
+                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}>
+                  About
                 </NavLink>
 
                 <NavLink to="https://github.com/ashcode1" target="_blank" className="nav-item">
@@ -74,36 +108,77 @@ class TopicsHeader extends React.Component {
         </div>
 
         {/* HERO FOOTER */}
-        <div className="hero-foot">
-          <nav className="tabs is-boxed is-fullwidth">
-            <div className="container" ref={(section) => { this.Container = section; }}>
-              <ul>
-                <NavLink
-                  className="nav_tab"
-                  to={'/'}
-                  onClick={() =>
-                    scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
-                >
-                  <li><a>Most Popular</a></li>
-                </NavLink>
-
-                {this.props.topicsTitles
-                  .map(topic => (
+        
+        {/* mobile only */}
+        <div className="container" ref={(section) => { this.Tile = section; }}>
+          
+          <div className="columns is-centered">
+            <div className="column has-text-centered">
+              <div className="menu">
+                <ul>
                     <NavLink
-                      to={`/articles/${topic.slug}`}
-                      key={topic._id}
+                      to={'/'}
+                      onClick={() =>
+                        scrollToComponent(this.Tile, { offset: 0, align: 'top', duration: 1500 })}
+                    >
+                      <li><a>Most Popular</a></li>
+                    </NavLink>
+
+                  {this.props.topicsTitles
+                    .map(topic => (
+                        <NavLink
+                          to={`/articles/${topic.slug}`}
+                          key={topic._id}
+                          onClick={() =>
+                            scrollToComponent(this.Tile, { offset: 0, align: 'top', duration: 1500 })}
+                        >
+                          <li><a>{topic.title}</a></li>
+                        </NavLink>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        {/* small tablet upwards */}
+            <div className="hero-foot">
+              <nav className="tabs is-boxed is-fullwidth">
+                <div className="container" ref={(section) => { this.Container = section; }}>
+                  <ul>
+                    <NavLink
+                      className="nav_tab"
+                      to={'/'}
                       onClick={() =>
                         scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
                     >
-                      <li><a>{topic.title}</a></li>
+                      <li><a>Most Popular</a></li>
                     </NavLink>
-                  ))
-                }
-              </ul>
+
+                    {this.props.topicsTitles
+                      .map(topic => (
+                        <NavLink
+                          to={`/articles/${topic.slug}`}
+                          key={topic._id}
+                          onClick={() =>
+                            scrollToComponent(this.Container, { offset: 0, align: 'top', duration: 1500 })}
+                        >
+                          <li><a>{topic.title}</a></li>
+                        </NavLink>
+                      ))
+                    }
+                  </ul>
+                </div>
+              </nav>
             </div>
-          </nav>
-        </div>
+          
       </section>
+      </div>
+
+      </div>
+
     );
   }
 }

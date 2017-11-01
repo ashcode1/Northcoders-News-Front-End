@@ -48,7 +48,7 @@ class Article extends React.Component {
             <section className="box">
               <h1 className="title"><b>{this.props.article.title}</b></h1>
               <h6 className="subtitle">Created by: {this.props.article.created_by}</h6>
-              <p className="">{this.props.article.body}</p>
+              <p className="article-content">{this.props.article.body}</p>
               <VoteButtons
                 votes={this.props.article.votes}
                 id={this.props.article._id}

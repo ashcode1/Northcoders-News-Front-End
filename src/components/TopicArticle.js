@@ -44,13 +44,4 @@ TopicArticle.defaultProps = {
   }),
 };
 
-TopicArticle.propTypes = {
-  title: PropTypes.string.isRequired,
-  votes: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
-  article: PropTypes.object.isRequired,
-  avatarUrl: PropTypes.string.isRequired,
-  voteOnTopicArticles: PropTypes.func.isRequired,
-};
-
 export default TopicArticle;
