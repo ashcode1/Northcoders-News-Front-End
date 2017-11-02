@@ -16,6 +16,7 @@ export class TopicPage extends React.Component {
   }
 
   render() {
+    console.log('###############################', this.props.TopicArticles);
     return (
       <section className="container">
         <div className="columns is-centered">
@@ -56,9 +57,7 @@ function mapDispatchToProps(dispatch) {
 
 
 function mapStateToProps(state) {
-  console.log('STATE', state);
   return {
-    state,
     TopicArticles: state.topicArticles,
     users: state.users,
   };

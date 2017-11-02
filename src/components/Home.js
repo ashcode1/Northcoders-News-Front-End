@@ -11,6 +11,7 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log('&&&&&&&&&&&&&', this.props.articles)
     return (
       <section className="container">
         <div className="columns is-centered">
@@ -69,14 +70,6 @@ Home.defaultProps = {
   fetchUsers: () => ({
     value: 'default value',
   }),
-};
-
-Home.propTypes = {
-  fetchArticles: PropTypes.func.isRequired,
-  articles: PropTypes.array.isRequired,
-  voteOnArticles: PropTypes.func.isRequired,
-  users: PropTypes.object.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

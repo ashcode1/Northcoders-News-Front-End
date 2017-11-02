@@ -77,7 +77,10 @@ export function fetchArticle(articleId) {
     dispatch(fetchIndividualArticle.fetchArticleRequest());
     axios.get(`${ROOT}/articles/${articleId}`)
       .then((res) => {
-        dispatch(fetchIndividualArticle.fetchArticleSuccess(res.data));
+        // axios get users/userId route and the article.userID from res.data.article.created_by
+        // then add the user info to the article obj
+        // then dispatch the success
+        dispatch(fetchIndividualArticle.fetchArticleSuccess(res.data.article));
       })
       .catch((err) => {
         dispatch(fetchIndividualArticle.fetchArticleError(err));
@@ -91,7 +94,7 @@ export function fetchArticleComments(articleId) {
     dispatch(articleComments.fetchArticleCommentsRequest());
     axios.get(`${ROOT}/articles/${articleId}/comments`)
       .then((res) => {
-        dispatch(articleComments.fetchArticleCommentsSuccess(res.data.comments));
+        dispatch(articleComments.fetchArticleCommentsSuccess(res.data));
       })
       .catch((err) => {
         dispatch(articleComments.fetchArticleCommentsError(err));
@@ -120,7 +123,8 @@ export function articleVote(articleId, vote) {
     axios
       .put(`${ROOT}/articles/${articleId}?vote=${vote}`)
       .then((res) => {
-        dispatch(articleVoteAction.articleVoteSuccess(res.data));
+        console.log('vote', vote);
+        dispatch(articleVoteAction.articleVoteSuccess(vote));
       })
       .catch((error) => {
         dispatch(articleVoteAction.articleVoteError(error));
