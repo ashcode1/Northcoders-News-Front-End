@@ -12,19 +12,16 @@ The articles that make up this site are divided into topics: Football, Cooking a
 
 * A user can also add comments and remove comments, but only their own. If you try to delete another user's comment you will be denied access!
 
-### Routes
+### Objectives
 
-| Route |   |
-| ------|---|
-| `GET /api/topics` | Get all the topics |
-| `GET /api/topics/:topic_id/articles` | Return all the articles for a certain topic |
-| `GET /api/articles` | Returns all the articles |
-| `GET /api/articles/:article_id/comments` | Get all the comments for a individual article |
-| `POST /api/articles/:article_id/comments` | Add a new comment to an article. This route requires a JSON body with a comment key and value pair e.g: {"comment": "This is my new comment"} |
-| `PUT /api/articles/:article_id` | Increment or Decrement the votes of an article by one. This route requires a vote query of 'up' or 'down' e.g: /api/articles/:article_id?vote=up |
-| `PUT /api/comments/:comment_id` | Increment or Decrement the votes of a comment by one. This route requires a vote query of 'up' or 'down' e.g: /api/comments/:comment_id?vote=down |
-| `DELETE /api/comments/:comment_id` | Deletes a comment |
-| `GET /api/users/:username` | Returns a JSON object with the profile data for the specified user. |
+Building this project was an exercise in learning and practising the following:
+                
+  1. Pulling together various skills and technologies to produce an interactive, functional application.
+  2. Working with [C.R.U.D](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) from a front end perspective
+  3. Making advanced asynchronous API calls
+  4. Utilising the various HTTP response codes and updating the UI accordingly
+  5. Common HTTP request types `POST`, `PUT` & `DELETE`
+  6. Interacting with a server using URL queries and request bodies.
 
 
 ## Getting Started
